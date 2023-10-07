@@ -21,7 +21,8 @@ public class UsersController {
     public ResponseEntity<List<Users>> getAllUsers() {
         try {
             return ResponseEntity.ok(usersService.findAll());
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResponseEntity.status(404).body(null);
         }
     }
@@ -30,39 +31,40 @@ public class UsersController {
     public ResponseEntity<Users> getUsersById(@PathVariable int user_id) {
         try {
             return ResponseEntity.ok(usersService.findById(user_id));
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResponseEntity.status(404).body(null);
         }
     }
 
-    //???????
     @PostMapping("/")
     public ResponseEntity<Users> saveUser(@RequestBody Users users) {
         try {
             return ResponseEntity.ok(usersService.save(users));
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResponseEntity.status(404).body(null);
         }
     }
 
-    //??
     @DeleteMapping("/all")
     public ResponseEntity<String> deleteAllUsers() {
         try {
             usersService.deleteAll();
             return ResponseEntity.ok("All users were deleted");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResponseEntity.status(404).body("Users not found");
         }
     }
 
-    //need to delete all notes of this user ???
     @DeleteMapping("/all/{user_id}")
     public ResponseEntity<String> deleteUserById(@PathVariable int user_id) {
         try {
             usersService.deleteById(user_id);
             return ResponseEntity.ok("User with id " + user_id + " was deleted");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             return ResponseEntity.status(404).body("User not found with id " + user_id);
         }
     }

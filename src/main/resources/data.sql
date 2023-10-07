@@ -12,7 +12,7 @@ INSERT INTO notes (title,
                               ('title1', 'content1', 2),
                               ('title2', 'content2', 1),
                               ('title3', 'content3', 1),
-                              ('title4', 'content4', 2);
+                              ('title4', 'content4', 3);
 
 -- -- Insert example lockers
 -- INSERT INTO lockers (address) VALUES

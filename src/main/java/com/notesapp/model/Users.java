@@ -1,6 +1,7 @@
 package com.notesapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.notesapp.model.auth.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,8 +27,15 @@ public class Users {
     @Column(name = "email")
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
+
+    @Column(name = "password")
+    private String password;
+
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Notes> notes;
 
 }
